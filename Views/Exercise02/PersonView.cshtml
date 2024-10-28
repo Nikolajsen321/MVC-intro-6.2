@@ -1,0 +1,54 @@
+﻿@using StartUp_CORE.Models;
+
+
+@functions{
+    //Gør koden DRY(Dont repeat yourself ved hjælp af fcuntion i razor  og derefter tilføjer telefonnummer og beregner alder) 
+    //formål her er at skabe en metode i viewet der vise en person uden at gentage koden
+    //1.1 Opdater PersonView.cshtml til at Brug @functions
+    //Du vil tilføje en metode, der tager en
+    //  Person som parameter og viser deres data.Brug @functions i Razor til at oprette denne metode.
+    void RenderPerson(Person person)
+    {
+
+            <p>@person.FirstName @person.LastName (@string.Join(", ", person.PhoneNumber))</p>
+            <p>@person.Address</p>
+            <p>@person.Zip @person.City</p>
+            <br />
+       
+       
+    }
+}
+
+@* Viser adresseetiketter for hver person ved brug af ViewData *@
+@{
+    var person1 = (Person)ViewData["Person1"];
+    var person2 = (Person)ViewData["Person2"];
+
+    if (person1 != null)
+    {
+        RenderPerson(person1);
+    }
+
+    if (person2 != null)
+    {
+        RenderPerson(person2);
+    }
+    
+
+  
+    
+}
+
+
+
+
+
+@* <p>@person1.FirstName @person1.LastName</p>
+<p>@person1.Address</p>
+<p>@person1.Zip @person1.City</p>
+
+<br />
+
+<p>@person2.FirstName @person2.LastName</p>
+<p>@person2.Address</p>
+<p>@person2.Zip @person2.City</p>  *@
